@@ -40,7 +40,8 @@
 # 📁 Project Structure
 
    
-
+This project was completed as part of my studies at the Automation College by Gal Matalon –
+https://automation.co.il
 
 
 
