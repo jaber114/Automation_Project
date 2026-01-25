@@ -31,24 +31,24 @@ class BasePage:
        # self.delay(4)
        # self.driver.find_element(*locator).click()
 
-def click(self, locator, timeout=15):
-    wait = WebDriverWait(self.driver, timeout)
-
-    # wait element exists + visible
-    el = wait.until(EC.visibility_of_element_located(*locator))
-
-    # scroll to center
-    self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", el)
-    time.sleep(0.2)
-
-    # wait clickable (not just visible)
-    el = wait.until(EC.element_to_be_clickable(*locator))
-
-    try:
-        el.click()
-    except (ElementClickInterceptedException, ElementNotInteractableException):
-        # last resort: JS click (useful when something overlays but click still possible)
-        self.driver.execute_script("arguments[0].click();", el)
+    def click(self, locator, timeout=15):
+        wait = WebDriverWait(self.driver, timeout)
+    
+        # wait element exists + visible
+        el = wait.until(EC.visibility_of_element_located(*locator))
+    
+        # scroll to center
+        self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", el)
+        time.sleep(0.2)
+    
+        # wait clickable (not just visible)
+        el = wait.until(EC.element_to_be_clickable(*locator))
+    
+        try:
+            el.click()
+        except (ElementClickInterceptedException, ElementNotInteractableException):
+            # last resort: JS click (useful when something overlays but click still possible)
+            self.driver.execute_script("arguments[0].click();", el)
     
 
     def get_text(self, locator) -> str:
