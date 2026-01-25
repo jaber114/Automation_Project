@@ -29,6 +29,7 @@ class BasePage:
 
     
     def click(self, locator, timeout=15):
+        print("DEBUG: new BasePage.click() is running:", locator)
         wait = WebDriverWait(self.driver, timeout)
 
         el = wait.until(EC.presence_of_element_located(locator))
