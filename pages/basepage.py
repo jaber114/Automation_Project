@@ -24,7 +24,7 @@ class BasePage:
         self.driver.find_element(*locator).send_keys(*text)
 
     def click(self,locator):
-        self.delay(3)
+        self.delay(4)
         self.driver.find_element(*locator).click()
 
     def get_text(self, locator) -> str:
