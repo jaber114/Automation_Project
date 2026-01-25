@@ -35,16 +35,16 @@ def setup(request):
     request.cls.driver.quit()
 
 
-def pytest_sessionfinish() -> None:
-    browser_type=browsertype()
-    environment_properties = {
-     'browser': browser_type,
-     'driver_version': driver.capabilities['browserVersion']
-    }
-    allure_env_path = os.path.join("allure-results", 'environment.properties')
-    with open(allure_env_path, 'w') as f:
-        data = '\n'.join([f'{variable}={value}' for variable, value in environment_properties.items()])
-        f.write(data)
+#def pytest_sessionfinish() -> None:
+    #browser_type=browsertype()
+   # environment_properties = {
+    # 'browser': browser_type,
+     #'driver_version': driver.capabilities['browserVersion']
+    #}
+   # allure_env_path = os.path.join("allure-results", 'environment.properties')
+   # with open(allure_env_path, 'w') as f:
+      #  data = '\n'.join([f'{variable}={value}' for variable, value in environment_properties.items()])
+      #  f.write(data)
 
 def browsertype():
     browser=ConfigReader.read_config("browser","browser_type")
