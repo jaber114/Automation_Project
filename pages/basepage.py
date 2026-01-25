@@ -27,9 +27,19 @@ class BasePage:
         self.delay(4)
         self.driver.find_element(*locator).send_keys(*text)
 
-    def click(self,locator):
-        self.delay(4)
-        self.driver.find_element(*locator).click()
+    
+    def click(self, locator, timeout=15):
+        wait = WebDriverWait(self.driver, timeout)
+
+        el = wait.until(EC.presence_of_element_located(locator))
+        self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", el)
+        time.sleep(0.2)
+
+        el = wait.until(EC.element_to_be_clickable(locator))
+        try:
+            el.click()
+        except (ElementClickInterceptedException, ElementNotInteractableException):
+            self.driver.execute_script("arguments[0].click();", el)
 
     #def click(self, locator, timeout=15):
         #wait = WebDriverWait(self.driver, timeout)
