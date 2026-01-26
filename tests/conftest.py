@@ -19,14 +19,7 @@ def setup(request):
     match browser_kind:
         case "Chrome":
           request.cls.driver = webdriver.Chrome()
-        case "Edge":
-          opts = Options()
-          opts.add_argument("--user-data-dir=C:\\ProgramData\\Jenkins\\edge-profile")
-          opts.add_argument("--no-first-run")
-          opts.add_argument("--no-default-browser-check")
-          opts.add_argument("--disable-dev-shm-usage")
-          opts.add_argument("--disable-gpu")
-          opts.add_argument("--window-size=1920,1080")        
+        case "Edge":      
           request.cls.driver = webdriver.Edge()
         case "Firefox":
           request.cls.driver=webdriver.Firefox()
