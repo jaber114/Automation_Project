@@ -1,6 +1,4 @@
-import os
 
-import allure
 import pytest
 from pages.check_out_forms import CheckOutForms
 from pages.choose_product import ChooseProduct
@@ -11,7 +9,7 @@ from utils.config import ConfigReader
 from selenium import webdriver
 
 
-@pytest.fixture(scope="class", autouse=True)
+@pytest.fixture(scope="function", autouse=True)
 def setup(request):
     global driver
     browser_kind=browsertype()
