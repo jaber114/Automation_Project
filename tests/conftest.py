@@ -7,6 +7,9 @@ from pages.sign_up_page import SignUp
 from pages.user_actions import UserActions
 from utils.config import ConfigReader
 from selenium import webdriver
+from selenium.webdriver.edge.options import Options
+from selenium.webdriver.edge.options import Options as EdgeOptions
+
 
 
 @pytest.fixture(scope="function", autouse=True)
