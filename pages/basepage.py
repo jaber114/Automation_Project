@@ -9,6 +9,12 @@ import time
 
 
 class BasePage:
+    
+    @staticmethod
+    def generate_random_email(domain="gmail.com", length=8):
+        username_chars = string.ascii_lowercase + string.digits
+        username = ''.join(random.choice(username_chars) for _ in range(length))
+        return f"{username}@{domain}"
 
     def __init__(self,driver):
         self.driver:WebDriver=driver
