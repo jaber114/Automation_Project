@@ -27,7 +27,7 @@ class Test_choose_product(BaseTest):
             self.check_out_forms.navigate_to_contact_us_page()
         with allure.step("Filling the form:name,email,enquiry"):
             self.check_out_forms.delay(5)
-            self.check_out_forms.fill_contact_us_form("jaber","srks662@gmail.com","thisistheasdgdfgdgffsdhhdfsdfgdfgddfgd")
+            self.check_out_forms.fill_contact_us_form("Jaber","srks662@gmail.com","thisistheasdgdfgdgffsdhhdfsdfgdfgddfgd")
         with allure.step("Contact us form submit validation"):
             self.check_out_forms.delay(5)
             if self.check_out_forms.form_validation():
@@ -58,13 +58,13 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("HTC Touch HD")
+            self.choose_product_page.choose_product("HP LP3065")
         with allure.step("Add product to the cart"):
             self.choose_product_page.delay(5)
             self.choose_product_page.add_to_cart()
         with allure.step("Navigate to cart screen"):
-            self.choose_product_page.navigate_to_cart()
             self.choose_product_page.delay(5)
+            self.choose_product_page.navigate_to_cart()
         with allure.step("Click on checkout button"):
             self.check_out_forms.delay(5)
             self.check_out_forms.check_out_button_click()
@@ -88,6 +88,7 @@ class Test_choose_product(BaseTest):
                 assert True
             else:
                 assert False,"Failed to purchase the product"
+
 
 
 
