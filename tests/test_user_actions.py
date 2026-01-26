@@ -32,10 +32,10 @@ class Test_user_actions(BaseTest):
         self.user_actions.change_password("jaber","jaber")
         self.user_actions.delay(4)
         if self.user_actions.change_password_validation():
-           assert False,"Password not changed,please check if both password and confirmed password are equals"
+           assert False ,f"Password not changed,please check if both password and confirmed password are equals"
         else:
             assert True
-#_________________________________________________________________________________________________________________________________________________________________________________________________
+ #_________________________________________________________________________________________________________________________________________________________________________________________________
  @allure.severity(Severity.MINOR)
  @allure.title("Update user information ")
  @allure.description("logging in,Navigates to my account page,navigate to edit user info screen,and change user information")
@@ -62,7 +62,7 @@ class Test_user_actions(BaseTest):
         self.user_actions.delay(10)
         self.user_actions.change_user_information(
         "jaber",
-        "",
+        "fdadfafa",
         "jaber@xsense.co",
         "055992545585")
         self.user_actions.delay(10)
