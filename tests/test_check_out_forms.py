@@ -10,18 +10,18 @@ class Test_choose_product(BaseTest):
     @allure.description("logging in,Navigates to Contact us page,fill the form and send it")
     def test_contact_us_form(self):
         with allure.step("Clicking on the drop down button"):
-            self.login_page.delay(5)
+            self.login_page.delay(4)
             self.login_page.click_on_my_account_drop_down()
         with allure.step("Clicking on Login button the maim menu"):
-            self.login_page.delay(2)
+            self.login_page.delay(4)
             self.login_page.menu_login_button()
         with allure.step("Filling the email and password with the data above"):
-            self.login_page.delay(2)
+            self.login_page.delay(4)
             self.login_page.fill_login_fields(username, password)
         with allure.step("Clicking on the login button"):
-            self.login_page.delay(2)
+            self.login_page.delay(4)
             self.login_page.login()
-            self.login_page.delay(2)
+            self.login_page.delay(4)
         with allure.step("Navigates to contact us page"):
             self.check_out_forms.delay(5)
             self.check_out_forms.navigate_to_contact_us_page()
