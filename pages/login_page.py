@@ -9,7 +9,7 @@ class LoginPage(BasePage):
     def __init__(self,driver):
         super().__init__(driver)
 
-    MY_ACCOUNT_DROP_DOWN = (By.CSS_SELECTOR,"a.dropdown-toggle > span.hidden-xs")
+    MY_ACCOUNT_DROP_DOWN = (By.CSS_SELECTOR,"a.dropdown-toggle[title='My Account']")
     ACCOUNT_DROP_DOWN_LOGIN_BUTTON = (By.CSS_SELECTOR,".dropdown.open  li:nth-child(2) > a")
     EMAIL_FIELD = (By.CSS_SELECTOR, "#input-email")
     PASSWORD_FIELD = (By.CSS_SELECTOR, "#input-password")
