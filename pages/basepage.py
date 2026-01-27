@@ -1,25 +1,22 @@
-import time
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.ie.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException
-import string
+import time
 import random
-
-
-
+import string
 
 class BasePage:
-    
+
+    def __init__(self,driver):
+        self.driver:WebDriver=driver
+
     @staticmethod
     def generate_random_email(domain="gmail.com", length=8):
         username_chars = string.ascii_lowercase + string.digits
         username = ''.join(random.choice(username_chars) for _ in range(length))
         return f"{username}@{domain}"
-
-    def __init__(self,driver):
-        self.driver:WebDriver=driver
 
     def delay(self,milli_seconds):
         time.sleep(milli_seconds)
@@ -29,6 +26,9 @@ class BasePage:
 
     def back(self):
         self.driver.back()
+
+    def quit(self):
+        self.driver.quit()
 
     def fill_text(self,locator,text):
         self.driver.find_element(*locator).clear()
@@ -40,9 +40,8 @@ class BasePage:
         print("DEBUG: new BasePage.click() is running:", locator)
         print("URL:", self.driver.current_url)
         print("Title:", self.driver.title)
-        print("Count:", len(self.driver.find_elements(*self.MY_ACCOUNT_DROP_DOWN)))
+        print("Count:", len(self.driver.find_elements(*locator)))
         wait = WebDriverWait(self.driver, timeout)
-
         el = wait.until(EC.presence_of_element_located(locator))
         self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", el)
         time.sleep(0.2)
