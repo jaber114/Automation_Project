@@ -23,7 +23,7 @@ def setup(request):
           request.cls.driver=webdriver.Firefox()
 
     request.cls.driver.maximize_window()
-    #request.cls.driver.set_window_size(1920,1080)
+    request.cls.driver.set_window_size(1920,1080)
     url = ConfigReader.read_config("general", "url")
     request.cls.driver.get(url)
     request.cls.login_page = LoginPage(request.cls.driver)  # Pass the driver correctly here
