@@ -14,41 +14,49 @@ from utils.config import ConfigReader
 
 
 def browsertype():
-    # Prefer Jenkins env var if set, fallback to config.ini
-    return os.getenv("BROWSER", ConfigReader.read_config("browser", "browser_type")).strip()
+    return os.getenv(
+        "BROWSER",
+        ConfigReader.read_config("browser", "browser_type")
+    ).strip().lower()
 
 
 def build_driver(browser_kind: str):
-    browser_kind = browser_kind.lower()
-
-    # In Jenkins/SYSTEM, headless is strongly recommended
-    headless = os.getenv("HEADLESS", "1").strip() in ("1", "true", "True", "yes", "YES")
+    headless = os.getenv("HEADLESS", "1").lower() in ("1", "true", "yes")
 
     if browser_kind == "chrome":
         opts = ChromeOptions()
         if headless:
             opts.add_argument("--headless=new")
             opts.add_argument("--window-size=1920,1080")
-        opts.add_argument("--disable-gpu")
-        opts.add_argument("--no-sandbox")
-        opts.add_argument("--disable-dev-shm-usage")
+            opts.add_argument("--disable-gpu")
+            opts.add_argument("--no-sandbox")
+            opts.add_argument("--disable-dev-shm-usage")
         return webdriver.Chrome(options=opts)
 
     if browser_kind == "edge":
         opts = EdgeOptions()
+
+        # 🔥 CRITICAL FIX FOR JENKINS / SYSTEM
+        tmp_profile = os.path.join(
+            os.environ.get("TEMP", r"C:\Windows\Temp"),
+            "edge_selenium_profile"
+        )
+        opts.add_argument(f"--user-data-dir={tmp_profile}")
+
         if headless:
             opts.add_argument("--headless=new")
             opts.add_argument("--window-size=1920,1080")
+
         opts.add_argument("--disable-gpu")
         opts.add_argument("--no-sandbox")
         opts.add_argument("--disable-dev-shm-usage")
+
         return webdriver.Edge(options=opts)
 
     if browser_kind == "firefox":
         opts = FirefoxOptions()
         if headless:
             opts.add_argument("-headless")
-        # Optional: set window size in code after start
         return webdriver.Firefox(options=opts)
 
     raise ValueError(f"Unsupported browser_type: {browser_kind}")
@@ -59,7 +67,6 @@ def setup(request):
     browser_kind = browsertype()
     driver = build_driver(browser_kind)
 
-    # don't maximize in headless; set size
     try:
         driver.set_window_size(1920, 1080)
     except Exception:
