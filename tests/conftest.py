@@ -9,7 +9,7 @@ from utils.config import ConfigReader
 from selenium import webdriver
 
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest.fixture(scope="class", autouse=True)
 def setup(request):
     global driver
     browser_kind=browsertype()
