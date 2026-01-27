@@ -1,73 +1,93 @@
-from selenium.webdriver.common.by import By
 
-from pages.basepage import BasePage
+import allure
+from allure_commons.types import Severity
+from tests.base_test import BaseTest
+from utils.test_data_login_users import username,password
+class Test_choose_product(BaseTest):
 
-
-class CheckOutForms(BasePage):
-
-    def __init__(self,driver):
-        super().__init__(driver)
-
-
-    CONTACT_US_PAGE_BUTTON =(By.CSS_SELECTOR,"#top-links > ul > li:nth-child(1) > a")
-    NAME_FIELD=(By.CSS_SELECTOR,"#input-name")
-    EMAIL_FIELD=(By.CSS_SELECTOR,"#input-email")
-    ENQUIRY_FIELD=(By.CSS_SELECTOR,"#input-enquiry")
-    FORM_SUBMIT_BUTTON=(By.CSS_SELECTOR,".pull-right > input")
-    FORM_VALIDATION_TEXT = (By.CSS_SELECTOR,"#content > h1")
-    #
-    CHECK_OUT_BUTTON=(By.CSS_SELECTOR,".pull-right > a")
-    BILLING_CONTINUE_BUTTON = (By.CSS_SELECTOR,"#button-payment-address")
-    DELIVERY_CONTINUE_BUTTON=(By.CSS_SELECTOR,"#button-shipping-address")
-    PAYMENT_TERMS_CHECKBOX=(By.CSS_SELECTOR," div > input[type=checkbox]:nth-child(2)")
-    CONFIRM_ORDER_BUTTON = (By.CSS_SELECTOR,"#button-confirm")
-    PRODUCT_ORDER_SUCCESS_MESSAGE=(By.CSS_SELECTOR,"#content > h1")
-    DELIVERY_METH0D_COMMENT_FIELD=(By.CSS_SELECTOR,".panel-body > p > textarea")
-    DELIVERY_METH0D_CONTINUE_BUTTON=(By.CSS_SELECTOR,"#button-shipping-method")
-    PAYMENT_METHOD_COMMENT_FIELD=(By.CSS_SELECTOR,".panel-body > p:nth-child(4) > textarea")
-    PAYMENT_METHOD_CONTINUE_BUTTON=(By.CSS_SELECTOR,"#button-payment-method")
-
-    def navigate_to_contact_us_page(self):
-        self.click(self.CONTACT_US_PAGE_BUTTON)
-
-    def fill_contact_us_form(self,name,email,enquiry):
-        self.fill_text(self.NAME_FIELD,name)
-        self.fill_text(self.EMAIL_FIELD,email)
-        self.fill_text(self.ENQUIRY_FIELD,enquiry)
-        self.click(self.FORM_SUBMIT_BUTTON)
-
-    def form_validation(self):
-        try:
-            return self.driver.current_url=="https://tutorialsninja.com/demo/index.php?route=information/contact/success"
-        except Exception:
-            return False
-
-    def check_out_button_click(self):
-        self.click(self.CHECK_OUT_BUTTON)
-
-    def billing_address_button(self):
-        self.click(self.BILLING_CONTINUE_BUTTON)
-
-    def delivery_address_button(self):
-        self.click(self.DELIVERY_CONTINUE_BUTTON)
-
-    def delivery_method_page(self,delivery_method):
-        self.fill_text(self.DELIVERY_METH0D_COMMENT_FIELD,delivery_method)
-        self.click(self.DELIVERY_METH0D_CONTINUE_BUTTON)
-
-    def payment_method_page(self,payment_comment):
-        self.fill_text(self.PAYMENT_METHOD_COMMENT_FIELD,payment_comment)
-        self.click(self.PAYMENT_TERMS_CHECKBOX)
-        self.click(self.PAYMENT_METHOD_CONTINUE_BUTTON)
-
-    def confirm_order(self):
-        self.click(self.CONFIRM_ORDER_BUTTON)
-
-    def product_purchase_validation(self):
-     try:
-        return "Your order has been placed!" in self.get_text(self.PRODUCT_ORDER_SUCCESS_MESSAGE)
-     except Exception:
-         return False
+    @allure.severity(Severity.CRITICAL)
+    @allure.title("Fill and submit contact us form - Test A02")
+    @allure.description("logging in,Navigates to Contact us page,fill the form and send it")
+    def test_contact_us_form(self):
+        with allure.step("Clicking on the drop down button"):
+            self.login_page.delay(4)
+            self.login_page.click_on_my_account_drop_down()
+        with allure.step("Clicking on Login button the maim menu"):
+            self.login_page.delay(4)
+            self.login_page.menu_login_button()
+        with allure.step("Filling the email and password with the data above"):
+            self.login_page.delay(4)
+            self.login_page.fill_login_fields(username, password)
+        with allure.step("Clicking on the login button"):
+            self.login_page.delay(4)
+            self.login_page.login()
+            self.login_page.delay(4)
+        with allure.step("Navigates to contact us page"):
+            self.check_out_forms.delay(5)
+            self.check_out_forms.navigate_to_contact_us_page()
+        with allure.step("Filling the form:name,email,enquiry"):
+            self.check_out_forms.delay(5)
+            self.check_out_forms.fill_contact_us_form("Jaber","srks662@gmail.com","thisistheasdgdfgdgffsdhhdfsdfgdfgddfgd")
+        with allure.step("Contact us form submit validation"):
+            self.check_out_forms.delay(5)
+            if self.check_out_forms.form_validation():
+                assert True
+            else:
+                assert False,"Failed to submit the form"
+#_______________________________________________________________________________________________________________________
+    @allure.severity(Severity.CRITICAL)
+    @allure.title("Purchase product proccess")
+    @allure.description("Purchase product proccess")
+    def test_purchase_product(self):
+        with allure.step("Clicking on the drop down button"):
+            self.login_page.delay(2)
+            self.login_page.click_on_my_account_drop_down()
+        with allure.step("Clicking on Login button the maim menu"):
+            self.login_page.delay(2)
+            self.login_page.menu_login_button()
+        with allure.step("Filling the email and password with the data above"):
+            self.login_page.delay(2)
+            self.login_page.fill_login_fields(username, password)
+        with allure.step("Clicking on the login button"):
+            self.login_page.delay(2)
+            self.login_page.login()
+            self.login_page.delay(2)
+        with allure.step("Choose product_page category"):
+            self.choose_product_page.delay(5)
+            self.choose_product_page.choose_category("Desktops")
+            self.choose_product_page.delay(5)
+        with allure.step("Navigate to product page and choose product"):
+            self.choose_product_page.delay(5)
+            self.choose_product_page.choose_product("HP LP3065")
+        with allure.step("Add product to the cart"):
+            self.choose_product_page.delay(5)
+            self.choose_product_page.add_to_cart()
+        with allure.step("Navigate to cart screen"):
+            self.choose_product_page.delay(5)
+            self.choose_product_page.navigate_to_cart()
+        with allure.step("Click on checkout button"):
+            self.check_out_forms.delay(5)
+            self.check_out_forms.check_out_button_click()
+        with allure.step("Billing address page"):
+            self.check_out_forms.delay(5)
+            self.check_out_forms.billing_address_button()
+        with allure.step("delivery address page"):
+            self.check_out_forms.delay(2)
+            self.check_out_forms.delivery_address_button()
+        with allure.step("Delivery method page"):
+            self.check_out_forms.delay(3)
+            self.check_out_forms.delivery_method_page("commeneasdasda")
+        with allure.step("Payment method page"):
+            self.check_out_forms.delay(3)
+            self.check_out_forms.payment_method_page("adsadsadsadasdsada")
+        with allure.step("Confirm order validation"):
+            self.check_out_forms.delay(3)
+            self.check_out_forms.confirm_order()
+            self.check_out_forms.delay(3)
+            if self.check_out_forms.product_purchase_validation():
+                assert True
+            else:
+                assert False,"Failed to purchase the product"
 
 
 
