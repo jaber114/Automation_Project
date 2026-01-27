@@ -21,7 +21,10 @@ class LoginPage(BasePage):
 
 
     def click_on_my_account_drop_down(self):
+        self.delay(2)
         self.click(self.MY_ACCOUNT_DROP_DOWN)
+        self.delay(2)
+
 
     def menu_login_button(self):
         self.click(self.ACCOUNT_DROP_DOWN_LOGIN_BUTTON)
