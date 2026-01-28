@@ -5,6 +5,36 @@ from utils.test_data_login_users import username,password
 from tests.base_test import BaseTest
 class Test_choose_product(BaseTest):
 
+    @allure.severity(Severity.CRITICAL)
+    @allure.title("Fill and submit contact us form - Test A02")
+    @allure.description("logging in,Navigates to Contact us page,fill the form and send it")
+    def test_contact_us_form(self):
+        with allure.step("Clicking on the drop down button"):
+            self.login_page.delay(4)
+            self.login_page.click_on_my_account_drop_down()
+        with allure.step("Clicking on Login button the maim menu"):
+            self.login_page.delay(4)
+            self.login_page.menu_login_button()
+        with allure.step("Filling the email and password with the data above"):
+            self.login_page.delay(4)
+            self.login_page.fill_login_fields(username, password)
+        with allure.step("Clicking on the login button"):
+            self.login_page.delay(4)
+            self.login_page.login()
+            self.login_page.delay(4)
+        with allure.step("Navigates to contact us page"):
+            self.check_out_forms.delay(5)
+            self.check_out_forms.navigate_to_contact_us_page()
+        with allure.step("Filling the form:name,email,enquiry"):
+            self.check_out_forms.delay(5)
+            self.check_out_forms.fill_contact_us_form("Jaber","srks662@gmail.com","thisistheasdgdfgdgffsdhhdfsdfgdfgddfgd")
+        with allure.step("Contact us form submit validation"):
+            self.check_out_forms.delay(5)
+            if self.check_out_forms.form_validation():
+                assert True
+            else:
+                assert False,"Failed to submit the form"
+
    
 #_______________________________________________________________________________________________________________________
     @allure.severity(Severity.CRITICAL)
