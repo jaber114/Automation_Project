@@ -80,7 +80,7 @@ class Test_choose_product(BaseTest):
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
             self.choose_product_page.choose_product("HTC Touch HD")
-            if self.choose_product_page.product_validation("HTC Touch HDaaa"):
+            if self.choose_product_page.product_validation("HTC Touch HD"):
                 assert True
             else:
                 assert False,"the product you typed is not in this category"
@@ -116,7 +116,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.navigate_to_cart()
             self.choose_product_page.delay(5)
         with allure.step("Product in cart validation"):
-            if self.choose_product_page.product_in_cart_validation("HTC Touch HDaaa"):
+            if self.choose_product_page.product_in_cart_validation("HTC Touch HD"):
                 assert True
             else:
                 assert False,"Product not added to the cart"
