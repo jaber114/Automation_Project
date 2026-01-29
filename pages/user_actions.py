@@ -1,7 +1,5 @@
-
 from selenium.webdriver.common.by import By
 from pages.basepage import BasePage
-
 
 class UserActions(BasePage):
 
@@ -46,12 +44,10 @@ class UserActions(BasePage):
     def subscribe_to_newsletter(self):
         self.click(self.SUBSCRIBE_PAGE_BUTTON)
         self.click(self.SUBSCRIBE_ACTION_BUTTON)
-        # self.click(self.SUBSCRIBE_BUTTON)
 
     def unsubscribe_to_newsletter_page(self):
         self.click(self.SUBSCRIBE_PAGE_BUTTON)
         self.click(self.UNSUBSCRIBE_ACTION_BUTTON)
-        # self.click(self.SUBSCRIBE_BUTTON)
 
     def my_account_page(self):
         self.click(self.MY_ACCOUNT_DROP_DOWN)
