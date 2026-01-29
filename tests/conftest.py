@@ -13,7 +13,7 @@ from selenium import webdriver
 def setup(request):
     global driver
     browser_kind=browsertype()
-    print("Browser kind is",browser_kind)
+    #print("Browser kind is",browser_kind)
     match browser_kind:
         case "Chrome":
           request.cls.driver = webdriver.Chrome()
