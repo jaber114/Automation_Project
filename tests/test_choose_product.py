@@ -231,43 +231,6 @@ class Test_choose_product(BaseTest):
                 assert True
             else:
                 assert False,"Failed to update quantity"
-#_______________________________________________________________________________________________________
-    @allure.severity(Severity.CRITICAL)
-    @allure.title("Add product to the wishlist")
-    @allure.description("Choose product from a category and add it to the wishlist")
-    def test_add_product_to_wish_list(self):
-        with allure.step("Clicking on the drop down button"):
-            self.login_page.delay(2)
-            self.login_page.click_on_my_account_drop_down()
-        with allure.step("Clicking on Login button the maim menu"):
-            self.login_page.delay(2)
-            self.login_page.menu_login_button()
-        with allure.step("Filling the email and password with the data above"):
-            self.login_page.delay(2)
-            self.login_page.fill_login_fields(username, password)
-        with allure.step("Clicking on the login button"):
-            self.login_page.delay(2)
-            self.login_page.login()
-            self.login_page.delay(2)
-        with allure.step("Choose product_page category"):
-            self.choose_product_page.delay(5)
-            self.choose_product_page.choose_category("Desktops")
-            self.choose_product_page.delay(5)
-        with allure.step("Navigate to product page and choose product"):
-            self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("HP LP3065")
-        with allure.step("Add product_page to wishlist"):
-            self.choose_product_page.delay(5)
-            self.choose_product_page.add_product_to_wish_list()
-        with allure.step("Navigate to wishlist page"):
-            self.choose_product_page.delay(5)
-            self.choose_product_page.navigate_to_wish_list_page()
-        with allure.step("Product validation on wishlist page"):
-            self.choose_product_page.delay(5)
-            if self.choose_product_page.product_in_wishlist("HP LP3065"):
-                assert True
-            else:
-                assert False,"Failed to add the product to the wishlist"
 #_______________________________________________________________________________________________________________________
     @allure.severity(Severity.CRITICAL)
     @allure.title("Remove product from wishlist")
@@ -311,6 +274,43 @@ class Test_choose_product(BaseTest):
                 assert False, "Failed to remove the product from the wishlist"
 
 #_______________________________________________________________________________________________________________________
+    @allure.severity(Severity.CRITICAL)
+    @allure.title("Add product to the wishlist")
+    @allure.description("Choose product from a category and add it to the wishlist")
+    def test_add_product_to_wish_list(self):
+        with allure.step("Clicking on the drop down button"):
+            self.login_page.delay(2)
+            self.login_page.click_on_my_account_drop_down()
+        with allure.step("Clicking on Login button the maim menu"):
+            self.login_page.delay(2)
+            self.login_page.menu_login_button()
+        with allure.step("Filling the email and password with the data above"):
+            self.login_page.delay(2)
+            self.login_page.fill_login_fields(username, password)
+        with allure.step("Clicking on the login button"):
+            self.login_page.delay(2)
+            self.login_page.login()
+            self.login_page.delay(2)
+        with allure.step("Choose product_page category"):
+            self.choose_product_page.delay(5)
+            self.choose_product_page.choose_category("Desktops")
+            self.choose_product_page.delay(5)
+        with allure.step("Navigate to product page and choose product"):
+            self.choose_product_page.delay(5)
+            self.choose_product_page.choose_product("HP LP3065")
+        with allure.step("Add product_page to wishlist"):
+            self.choose_product_page.delay(5)
+            self.choose_product_page.add_product_to_wish_list()
+        with allure.step("Navigate to wishlist page"):
+            self.choose_product_page.delay(5)
+            self.choose_product_page.navigate_to_wish_list_page()
+        with allure.step("Product validation on wishlist page"):
+            self.choose_product_page.delay(5)
+            if self.choose_product_page.product_in_wishlist("HP LP3065"):
+                assert True
+            else:
+                assert False,"Failed to add the product to the wishlist"
+#_________________________________________________________________________________________________________________________________
     @allure.severity(Severity.CRITICAL)
     @allure.title("Write product_page review")
     @allure.description("Choose product from a category and add a review to this product")
