@@ -5,8 +5,8 @@ class UserActions(BasePage):
 
     def __init__(self,driver):
         super().__init__(driver)
-    MY_ACCOUNT_DROP_DOWN = (By.CSS_SELECTOR,"a.dropdown-toggle > span.hidden-xs")
-    MY_ACCOUNT_PAGE_BUTTON = (By.CSS_SELECTOR,"a[title='My Account']")
+    MY_ACCOUNT_DROP_DOWN = (By.CSS_SELECTOR,"a[title='My Account']")
+    MY_ACCOUNT_PAGE_BUTTON = (By.CSS_SELECTOR,".dropdown-menu a[href='https://tutorialsninja.com/demo/index.php?route=account/account']")
     # for subscribe/unsubscribe actions
     SUBSCRIBE_ACTION_BUTTON = (By.CSS_SELECTOR, "label:nth-child(1) > input[type=radio]")
     SUBSCRIBE_BUTTON =(By.CSS_SELECTOR,".pull-right > input")
