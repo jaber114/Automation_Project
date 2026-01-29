@@ -37,10 +37,10 @@ class BasePage:
 
     
     def click(self, locator, timeout=15):
-        print("DEBUG: new BasePage.click() is running:", locator)
-        print("URL:", self.driver.current_url)
-        print("Title:", self.driver.title)
-        print("Count:", len(self.driver.find_elements(*locator)))
+        #print("DEBUG: new BasePage.click() is running:", locator)
+        #print("URL:", self.driver.current_url)
+        #print("Title:", self.driver.title)
+        #print("Count:", len(self.driver.find_elements(*locator)))
         wait = WebDriverWait(self.driver, timeout)
         el = wait.until(EC.presence_of_element_located(locator))
         self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", el)
