@@ -12,7 +12,7 @@ class CheckOutForms(BasePage):
     FORM_SUBMIT_BUTTON=(By.CSS_SELECTOR,".pull-right > input")
     FORM_VALIDATION_TEXT = (By.CSS_SELECTOR,"#content > h1")
     CHECK_OUT_BUTTON=(By.CSS_SELECTOR,".pull-right > a")
-    BILLING_CONTINUE_BUTTON = (By.CSS_SELECTOR,"#button-payment-address")
+    BILLING_CONTINUE_BUTTON = (By.CSS_SELECTOR,"input[value='Continue']")
     DELIVERY_CONTINUE_BUTTON=(By.CSS_SELECTOR,"#button-shipping-address")
     PAYMENT_TERMS_CHECKBOX=(By.CSS_SELECTOR," div > input[type=checkbox]:nth-child(2)")
     CONFIRM_ORDER_BUTTON = (By.CSS_SELECTOR,"#button-confirm")
