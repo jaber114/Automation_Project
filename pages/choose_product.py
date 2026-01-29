@@ -43,7 +43,7 @@ class ChooseProduct(BasePage):
     UPDATE_QUANTITY_BUTTON=(By.CSS_SELECTOR,By.CSS_SELECTOR,"#content > form > div > table > tbody > tr > td:nth-child(4) > div > span > .btn.btn-primary")
     # Wishlist
     ADD_PRODUCT_TO_WISH_LIST_BUTTON=(By.CSS_SELECTOR,".btn-group >.btn.btn-default:nth-child(1)")
-    WISH_LIST_BUTTON_PAGE= (By.CSS_SELECTOR,"#wishlist-total > span")
+    WISH_LIST_BUTTON_PAGE= (By.CSS_SELECTOR,"#wishlist-total")
     # Review
     WRITE_REVIEW_BUTTON=(By.CSS_SELECTOR,".rating > p > a:nth-child(7)")
     REVIEW_NAME_FIELD = (By.CSS_SELECTOR,"#input-name")
