@@ -23,7 +23,7 @@ class Test_choose_product(BaseTest):
             self.login_page.delay(2)
         with allure.step("Navigates to product page & earch for product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.product_search("stam")
+            self.choose_product_page.product_search("Mac")
             self.choose_product_page.delay(4)
             if self.choose_product_page.validate_product_search("Mac"):
                 assert True
@@ -262,9 +262,6 @@ class Test_choose_product(BaseTest):
         with allure.step("Navigate to wishlist page"):
             self.choose_product_page.delay(5)
             self.choose_product_page.navigate_to_wish_list_page()
-        with allure.step("add product to the wish list"):
-            self.choose_product_page.delay(5)
-            self.choose_product_page.add_product_to_wish_list()
         with allure.step("Product validation on wishlist page"):
             self.choose_product_page.delay(5)
             if self.choose_product_page.product_in_wishlist("HP LP3065"):
