@@ -29,7 +29,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("Samsung SyncMaster 941BW")
+            self.choose_product_page.choose_product("HP LP3065")
         with allure.step("Add product to the cart"):
             self.choose_product_page.delay(5)
             self.choose_product_page.add_to_cart()
@@ -38,7 +38,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.delay(5)
         with allure.step("Update product quantity"):
             self.choose_product_page.delay(6)
-            self.choose_product_page.update_product_quantity("Samsung SyncMaster 941BW",2)
+            self.choose_product_page.update_product_quantity("HP LP3065",2)
             self.choose_product_page.delay(7)
             if self.choose_product_page.update_quantity_validation():
                 assert True
