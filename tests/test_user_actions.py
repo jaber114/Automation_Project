@@ -1,3 +1,5 @@
+
+
 import allure
 from allure_commons.types import Severity
 from tests.base_test import BaseTest
