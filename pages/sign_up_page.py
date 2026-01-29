@@ -8,7 +8,7 @@ class SignUp(BasePage):
     def __init__(self,driver):
         super().__init__(driver)
 
-    MENU_BUTTON = (By.CSS_SELECTOR,"a.dropdown-toggle > span.hidden-xs")
+    MENU_BUTTON = (By.CSS_SELECTOR,"a[title='My Account']")
     FIRST_NAME = (By.CSS_SELECTOR, "#input-firstname")
     LAST_NAME = (By.CSS_SELECTOR, "#input-lastname")
     EMAIL = (By.CSS_SELECTOR, "#input-email")
