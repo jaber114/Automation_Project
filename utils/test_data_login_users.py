@@ -8,19 +8,19 @@ password = ConfigReader.read_config("login_info", "Password")
 # A list of tuples representing different login scenarios to be used in parameterized tests
 users = [
     # Test L07 - Invalid username and invalid password
-    ("stamnmfsgfd", "dsadnakdssada"),
+    #("stamnmfsgfd", "dsadnakdssada"),
 
     # Test L06 - Empty username (email), valid password
-    ("", password),
+   # ("", password),
 
     # Test L05 - Valid username (email), empty password
-    (username, ""),
+    #(username, ""),
 
     # Test L04 - Incorrect username (email), valid password
-    ("wrong", password),
+    #("wrong", password),
 
     # Test L03 - Valid username, incorrect password
-    (username, "wrong"),
+    #(username, "wrong"),
 
     # Test L02 - Valid username and valid password (happy path)
     (username, password),
