@@ -12,6 +12,7 @@ class UserActions(BasePage):
     SUBSCRIBE_BUTTON =(By.CSS_SELECTOR,".pull-right > input")
     SUBSCRIBE_PAGE_BUTTON = (By.CSS_SELECTOR, "ul:nth-child(8) >li > a")
     UNSUBSCRIBE_ACTION_BUTTON = (By.CSS_SELECTOR,"label:nth-child(2) > input[type=radio]")
+    CONFIRM_SUBSCRIPTION_BTN = (By.CSS_SELECTOR,".btn.btn-primary")
     # Change password fields
     PASSWORD_FIELD = (By.CSS_SELECTOR, "#input-password")
     PASSWORD_CONFIRM = (By.CSS_SELECTOR, "#input-confirm")
@@ -44,10 +45,12 @@ class UserActions(BasePage):
     def subscribe_to_newsletter(self):
         self.click(self.SUBSCRIBE_PAGE_BUTTON)
         self.click(self.SUBSCRIBE_ACTION_BUTTON)
+        self.click(self.CONFIRM_SUBSCRIPTION_BTN)
 
     def unsubscribe_to_newsletter_page(self):
         self.click(self.SUBSCRIBE_PAGE_BUTTON)
         self.click(self.UNSUBSCRIBE_ACTION_BUTTON)
+        self.click(self.CONFIRM_SUBSCRIPTION_BTN)
 
     def my_account_page(self):
         self.click(self.MY_ACCOUNT_DROP_DOWN)
