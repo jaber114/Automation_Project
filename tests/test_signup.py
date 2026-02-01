@@ -5,6 +5,7 @@ from tests.base_test import BaseTest
 from utils.test_data_signup_users import users
 
 
+@pytest.mark.order(2)
 class Test_signup(BaseTest):
 
     @allure.severity(Severity.CRITICAL)

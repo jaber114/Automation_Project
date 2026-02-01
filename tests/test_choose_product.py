@@ -1,8 +1,11 @@
 import allure
+import pytest
 from allure_commons.types import Severity
 from tests.base_test import BaseTest
 from utils.test_data_login_users import username, password
 
+
+@pytest.mark.order(3)
 class Test_choose_product(BaseTest):
 
     @allure.severity(Severity.CRITICAL)

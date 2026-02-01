@@ -4,7 +4,7 @@ from allure_commons.types import Severity
 from tests.base_test import BaseTest
 from utils.test_data_login_users import username, password
 
-
+@pytest.mark.order(4)
 class Test_user_actions(BaseTest):
 
     @allure.severity(Severity.CRITICAL)
