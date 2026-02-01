@@ -32,8 +32,8 @@ class Test_choose_product(BaseTest):
                 assert False, "Specific product not found"
 
     @allure.severity(Severity.CRITICAL)
-    @allure.title("Add product to cart")
-    @allure.description("Search for custom product")
+    @allure.title("Choose product category")
+    @allure.description("Choose product category")
     def test_choose_product_category(self):
         with allure.step("Clicking on the drop down button"):
             self.login_page.delay(2)
@@ -76,12 +76,12 @@ class Test_choose_product(BaseTest):
             self.login_page.delay(2)
         with allure.step("Choose product_page category"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_category("Desktops")
+            self.choose_product_page.choose_category("Laptops & Notebooks")
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("HTC Touch HD")
-            if self.choose_product_page.product_validation("HTC Touch HD"):
+            self.choose_product_page.choose_product("Sony VAIO")
+            if self.choose_product_page.product_validation("Sony VAIO"):
                 assert True
             else:
                 assert False, "the product you typed is not in this category"
@@ -105,11 +105,11 @@ class Test_choose_product(BaseTest):
             self.login_page.delay(2)
         with allure.step("Choose product_page category"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_category("Desktops")
+            self.choose_product_page.choose_category("Laptops & Notebooks")
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("HTC Touch HD")
+            self.choose_product_page.choose_product("MacBook Pro")
         with allure.step("Add product to the cart"):
             self.choose_product_page.delay(5)
             self.choose_product_page.add_to_cart()
@@ -117,7 +117,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.navigate_to_cart()
             self.choose_product_page.delay(5)
         with allure.step("Product in cart validation"):
-            if self.choose_product_page.product_in_cart_validation("HTC Touch HD"):
+            if self.choose_product_page.product_in_cart_validation("MacBook Pro"):
                 assert True
             else:
                 assert False, "Product not added to the cart"
