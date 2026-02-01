@@ -212,11 +212,11 @@ class Test_choose_product(BaseTest):
             self.login_page.delay(2)
         with allure.step("Choose product_page category"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_category("Desktops")
+            self.choose_product_page.choose_category("Phones & PDAs")
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("Samsung SyncMaster 941BW")
+            self.choose_product_page.choose_product("Palm Treo Pro")
         with allure.step("Add product to the cart"):
             self.choose_product_page.delay(5)
             self.choose_product_page.add_to_cart()
@@ -225,7 +225,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.delay(5)
         with allure.step("Update product quantity"):
             self.choose_product_page.delay(6)
-            self.choose_product_page.update_product_quantity("Samsung SyncMaster 941BW", 2)
+            self.choose_product_page.update_product_quantity("Palm Treo Pro", 2)
             self.choose_product_page.delay(7)
             if self.choose_product_page.update_quantity_validation():
                 assert True
