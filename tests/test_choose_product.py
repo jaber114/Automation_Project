@@ -292,11 +292,11 @@ class Test_choose_product(BaseTest):
             self.login_page.delay(2)
         with allure.step("Choose product_page category"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_category("Laptops & Notebooks")
+            self.choose_product_page.choose_category("Phones & PDAs")
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("MacBook Air")
+            self.choose_product_page.choose_product("HTC Touch HD")
         with allure.step("Add product_page to wishlist"):
             self.choose_product_page.delay(5)
             self.choose_product_page.add_product_to_wish_list()
@@ -305,7 +305,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.navigate_to_wish_list_page()
         with allure.step("Product validation on wishlist page"):
             self.choose_product_page.delay(5)
-            if self.choose_product_page.product_in_wishlist("MacBook Air"):
+            if self.choose_product_page.product_in_wishlist("HTC Touch HD"):
                 assert True
             else:
                 assert False, "Failed to add the product to the wishlist"
