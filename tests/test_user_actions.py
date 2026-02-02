@@ -91,7 +91,7 @@ class Test_user_actions(BaseTest):
             self.login_page.delay(4)
             self.login_page.login()
         with allure.step("Navigate to my account screen"):
-            self.user_actions.delay(4)
+            self.user_actions.delay(5)
             self.user_actions.my_account_page()
         with allure.step("Subscribe to newsletter"):
             self.user_actions.delay(5)

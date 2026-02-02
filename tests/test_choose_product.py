@@ -5,7 +5,7 @@ from tests.base_test import BaseTest
 from utils.test_data_login_users import username, password
 
 
-@pytest.mark.order(3)
+@pytest.mark.order(5)
 class Test_choose_product(BaseTest):
 
     @allure.severity(Severity.CRITICAL)
@@ -79,12 +79,12 @@ class Test_choose_product(BaseTest):
             self.login_page.delay(2)
         with allure.step("Choose product_page category"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_category("Laptops & Notebooks")
+            self.choose_product_page.choose_category("Desktops")
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("Sony VAIO")
-            if self.choose_product_page.product_validation("Sony VAIO"):
+            self.choose_product_page.choose_product("iPod Classic")
+            if self.choose_product_page.product_validation("iPod Classic"):
                 assert True
             else:
                 assert False, "the product you typed is not in this category"
@@ -108,11 +108,11 @@ class Test_choose_product(BaseTest):
             self.login_page.delay(2)
         with allure.step("Choose product_page category"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_category("Laptops & Notebooks")
+            self.choose_product_page.choose_category("Cameras")
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("MacBook Pro")
+            self.choose_product_page.choose_product("Nikon D300")
         with allure.step("Add product to the cart"):
             self.choose_product_page.delay(5)
             self.choose_product_page.add_to_cart()
@@ -120,7 +120,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.navigate_to_cart()
             self.choose_product_page.delay(5)
         with allure.step("Product in cart validation"):
-            if self.choose_product_page.product_in_cart_validation("MacBook Pro"):
+            if self.choose_product_page.product_in_cart_validation("Nikon D300"):
                 assert True
             else:
                 assert False, "Product not added to the cart"
@@ -219,7 +219,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("Palm Treo Pro")
+            self.choose_product_page.choose_product("iPhone")
         with allure.step("Add product to the cart"):
             self.choose_product_page.delay(5)
             self.choose_product_page.add_to_cart()
@@ -227,9 +227,8 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.navigate_to_cart()
             self.choose_product_page.delay(5)
         with allure.step("Update product quantity"):
-            self.choose_product_page.delay(6)
-            self.choose_product_page.update_product_quantity("Palm Treo Pro", 2)
-            self.choose_product_page.delay(7)
+            self.choose_product_page.update_product_quantity("iPhone", 2)
+            self.choose_product_page.delay(2)
             if self.choose_product_page.update_quantity_validation():
                 assert True
             else:
@@ -299,7 +298,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.delay(5)
         with allure.step("Navigate to product page and choose product"):
             self.choose_product_page.delay(5)
-            self.choose_product_page.choose_product("iPhone")
+            self.choose_product_page.choose_product("HTC Touch HD")
         with allure.step("Add product_page to wishlist"):
             self.choose_product_page.delay(5)
             self.choose_product_page.add_product_to_wish_list()
@@ -308,7 +307,7 @@ class Test_choose_product(BaseTest):
             self.choose_product_page.navigate_to_wish_list_page()
         with allure.step("Product validation on wishlist page"):
             self.choose_product_page.delay(5)
-            if self.choose_product_page.product_in_wishlist("iPhone"):
+            if self.choose_product_page.product_in_wishlist("HTC Touch HD"):
                 assert True
             else:
                 assert False, "Failed to add the product to the wishlist"

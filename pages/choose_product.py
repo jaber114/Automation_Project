@@ -187,7 +187,7 @@ class ChooseProduct(BasePage):
         self.delay(5)
 
     def product_in_wishlist(self,product):
-        product_area = self.driver.find_elements(By.CSS_SELECTOR, "#content > form > div > table > tbody > tr ")
+        product_area = self.driver.find_elements(By.CSS_SELECTOR, "#content ")
         # product_area=self.find_elements(self.PRODUCT_AREAS)
         for products in product_area:
             product_title = products.find_element(By.CSS_SELECTOR, ".text-left >a")
