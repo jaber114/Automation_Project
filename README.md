@@ -28,6 +28,13 @@
      ```
 # 📊 Reports Examples
 
+<img width="1857" height="1031" alt="image" src="https://github.com/user-attachments/assets/d8e58543-3ed5-4c7c-899b-546d494a8bb7" />
+
+
+<img width="1659" height="1018" alt="image" src="https://github.com/user-attachments/assets/e033e94a-3348-4281-9ece-b7b416fdc9bf" />
+
+
+
 
 
 
